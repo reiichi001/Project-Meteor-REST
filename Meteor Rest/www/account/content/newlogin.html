@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Meteor Login</title>
+
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+
+</head>
+
+<body>
+
+  <html lang="en-US">
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
+
+    <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+ <![endif]-->
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div id="login">
+
+        <form method="post" action="/lobby/login" enctype="application/x-www-form-urlencoded">
+		  <div class= "meteorlogo">
+		  <img src="img/Meteor_Logo.png" alt="example" class="logo" /> <!-- The logo must be 278x70 pixels! not more not less - will look whack if size isnt matched to that - can be your private server logo here -->
+		  </div>
+          <div class="logo">
+            <img src="img/logo.png" alt="example" class="logo" />
+          </div>
+          <fieldset class="clearfix">
+            <p><label for="username">Username</label></p> 
+            <p><input id="username" name="Username" autocomplete="off" type="text" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+			<p><label for="password">Password</label></p>
+            <p><input id="password" name="password" autocomplete="off" type="password" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
+            <input type="submit" name="login" id="login" value="Sign In"></p>
+
+          </fieldset>
+
+        </form>
+       
+        <p>Dont have a server account? <a href="createUser.html">Sign up now</a><span class="fontawesome-arrow-right"></span></p>
+		<p>Prefer the classic 1.0 login page?<a href="login.html"> Click Here</a><span class="fontawesome-arrow-right"></span></p>
+
+      </div> <!-- end login -->
+	  <script>
+		/*
+		window.location.search.substr(1).split("&").forEach(function(k) {
+			var s = k.split("=");
+			var e = document.getElementById(s[0]);
+			if(e) {
+				e.value = decodeURIComponent(s[1]);
+			}
+		});
+		*/
+		var queries = window.location.search.substr(1).split("&");
+		for (var k = 0; k < queries.length; k++) {
+			var s = queries[k].split("=");
+			
+			var e = s[0].split("Error");
+			if (e[0] != null && e[0].length > 0) {
+				alert("There was an issue logging in.");
+			}
+		}
+	</script>
+
+    </div>
+
+  </body>
+</html>
+
+</body>
+
+</html>

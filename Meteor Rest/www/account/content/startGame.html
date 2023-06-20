@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+</head>
+<body>
+
+	<script>
+		var sessionId = "";
+		/*window.location.search.substr(1).split("&").forEach(function(k) {
+			var s = k.split("=");
+			if(s[0] == "session") {
+				sessionId = s[1];
+			}
+		}); */
+		
+		//console.log(queries.toString());
+		//console.log(queries.length);
+		var queries = window.location.search.substr(1).split("&");
+		for (var k = 0; k < queries.length; k++) {
+			var s = queries[k].split("=");
+			if(s[0] == "session") {
+				sessionId = s[1];
+			}
+		}
+		if(sessionId.length == 56) {
+			//console.log("Starting game with session " + sessionId);
+			//window.location = "ffxiv://login_success?sessionId=" + sessionId;
+			document.write("<x-sqexauth sid=\""+sessionId+"\" lang=\"en-us\" region=\"2\" utc=\""+Date.now()+"\" />");
+		}
+
+	</script>
+</body>
+</html>

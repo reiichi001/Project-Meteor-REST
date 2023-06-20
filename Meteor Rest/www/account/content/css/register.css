@@ -1,0 +1,896 @@
+@charset "UTF-8";
+
+/* ====================================================================== */
+/* ベース指定 */
+/* ====================================================================== */
+html, body {
+	background-color: #efefef;
+	height: 100%;
+	word-wrap:break-word;
+	overflow-wrap:break-word;
+}
+body {
+	font-size: 14px;
+	font-family: 
+		Verdana, 
+		Roboto, 
+		"Droid Sans", 
+		"游ゴシック", 
+		YuGothic, 
+		"メイリオ", 
+		Meiryo, 
+		"ヒラギノ角ゴ ProN W3", 
+		"Hiragino Kaku Gothic ProN", 
+		"ＭＳ Ｐゴシック", 
+		sans-serif;
+	line-height: 1.5;
+}
+/* ----- 汎用リンク ----- */
+a {
+	color: #ed0000;
+}
+	a:hover {
+		text-decoration: none;
+	}
+/* ----- 汎用注釈カラー ----- */
+.notice {
+	color: #d45a00;
+}
+#wrap {
+	width: 100%;
+	min-height: 100%;
+	margin: auto;
+	position: relative;
+	}
+@media screen and (max-width: 640px) {
+		#wrap {
+			background: none!important;
+		}
+	}
+#wrapBody {
+	padding-bottom: 128px;
+	height: auto !important;
+	height: 100%;
+}
+#main {
+	padding-bottom: 128px;
+}
+	/* ===== スマホ用 ===== */
+	@media screen and (max-width: 640px) {
+		html, body {
+			font-size: 16px;
+		}
+		body {
+			min-width: 100%;
+		}
+		#main,#wrapBody {
+			padding-bottom: 201px;
+		}
+	}
+
+/* ====================================================================== */
+/* 汎用 */
+/* ====================================================================== */
+/* ===== 白背景 ===== */
+.background-white {
+	background-color: #ffffff!important;
+}
+
+/* ===== ボタン ===== */
+.button {
+	margin-right: auto;
+	margin-left: auto;
+	font-size: 1.28em;
+	text-indent: 0;
+	text-decoration: none;
+	text-align: center;
+}
+
+.btNavi1, .btNavi2 {
+	font-size: 1.28em;
+	text-indent: 0;
+	text-decoration: none;
+	text-align: center;
+	display:block;
+}
+
+/* ===== 汎用ボタン ===== */
+input.next-button,
+input.prev-button,
+input.common-button,
+input.btNavi1,
+input.btNavi2 {
+	box-sizing: content-box;
+	padding-top: 10px;
+	padding-bottom: 9px;
+	cursor: pointer;
+}
+
+.next-button,
+.prev-button,
+.common-button,
+.btNavi1,
+.btNavi2 {
+	padding-top: 8px;
+	padding-bottom: 7px;
+	width: 250px;
+	color: #fff;
+	font-weight: bold;
+	border: 1px solid #888888;
+	background-color: #b34c00;
+	border-radius: 8px;
+}
+	.next-button:hover,
+	.common-button:hover,
+	.btNavi1:hover {
+		background-color: #d45a00;
+	}
+.prev-button, .btNavi2 {
+	background-color: #9ca0a8;
+}
+	.prev-button:hover, .btNavi2:hover {
+		background-color: #818eaa;
+	}
+
+/* ----- 困ったら使うボタン ----- */
+.common-button {
+	width: 530px;
+}
+
+/* ===== ボタンボックス：左右二個配置する場合使用 ===== */
+.button-box {
+	margin-right: auto;
+	margin-left: auto;
+	width: 530px;
+}
+.button-box ul {
+}
+	.button-box li {
+		display: table-cell;
+	}
+	.button-box li:first-child {
+		padding-right: 25px;
+	}
+	.button-box li:last-child {
+	}
+
+@media screen and (max-width: 640px) {
+	/* ===== 汎用ボタン ===== */
+	.next-button,
+	.prev-button,
+	.common-button,
+	.btNavi1,
+	.btNavi2 {
+		padding-top: 24px;
+		padding-bottom: 24px;
+		width: 42.1%;
+		border: 1px solid #888888;
+	}
+	.prev-button, .btNavi2 {
+	}
+		.next-button:hover, .btNavi1:hover {
+			background-color: #d45a00;
+		}
+		.prev-button:hover, .btNavi2:hover {
+			background-color: #818eaa;
+	}
+	/* ----- 困ったら使うボタン ----- */
+	.common-button {
+		width: 87.5%;
+	}
+	/* ===== ボタンボックス：左右二個配置する場合 ===== */
+	.button-box {
+		width: 87.5%;
+	}
+	.button-box ul {
+		display: table;
+	    width: 100%;
+	}
+			.button-box li {
+				clear:both;
+				width: 100%;
+			}
+			.button-box li:first-child {
+				display: table-footer-group;
+				padding-right: 0px;
+			}
+			.button-box li:last-child {
+			}
+			.button-box li:last-child a {
+				margin-bottom: 40px;
+			}
+			
+		.button-box .button {
+			width: 100%;
+		}
+}
+
+/* ===== テキスト系 ===== */
+/* ----- PCの場合中央そろえにするテキスト ----- */
+.pc-text-center {
+	text-align: center;
+}
+@media screen and (max-width: 640px) {
+	/* ----- PCの場合中央そろえにするテキスト ----- */
+	.pc-text-center {
+		text-align: left;
+	}
+}
+
+
+/* ===== 罫線 ===== */
+hr.line-1, .inf-border1, .inf-border2 {
+	padding: 0;
+	margin: 0 auto;
+	height: 2px;
+	border: none;
+	background-color: #dedede;
+}
+
+/* ===== 内側に領域を狭めたエリア ===== */
+.block-offset {
+	margin-right: auto;
+	margin-left: auto;
+}
+	.block-offset.lv-1 {
+		width: 840px;
+	}
+	.block-offset.lv-2 {
+		width: 800px;
+	}
+	.block-offset.lv-3 {
+		width: 800px;
+	}
+@media screen and (max-width: 640px) {
+	/* ===== 内側に領域を狭めたエリア ===== */
+	.block-offset {
+	}
+		.block-offset.lv-1 {
+			width: 93%;
+		}
+		.block-offset.lv-2 {
+			width: 90%;
+		}
+		.block-offset.lv-3 {
+			width: 93.7%;
+		}
+}
+
+/* ===== スマホとPCで表示切替 ===== */
+/* ----- 大きい画面サイズ ----- */
+.pc-block {
+	display: block;
+}
+.pc-inline {
+	display: inline;
+}
+.pc-inline-block {
+	display: inline-block;
+}
+/* ----- 小さい画面サイズ ----- */
+.sp-block,
+.sp-inline,
+.sp-inline-block {
+	display: none;
+}
+@media screen and (max-width: 640px) {
+	/* ----- 大きい画面サイズ ----- */
+	.pc-block,
+	.pc-inline,
+	.pc-inline-block {
+		display: none;
+	}
+	/* ----- 小さい画面サイズ ----- */
+	.sp-block {
+		display: block;
+	}
+	.sp-inline {
+		display: inline;
+	}
+	.sp-inline-block {
+		display: inline-block;
+	}
+}
+
+/* ===== アイコンつきリンク ===== */
+.icon-link {
+}
+	.icon-link th,
+	.icon-link td {
+		vertical-align: middle;
+	}
+	/* アイコンとテキストのマージン */
+	.icon-link td {
+		padding-left: 5px;
+	}
+	/* ----- アイコン ----- */
+	.icon-link th span {
+		display: block;
+		width: 32px;
+		height: 32px;
+	}
+	.icon-link.link-next th span {/* 進むバージョン */
+		background-image: url(/account/content/flat/responsive/img/misc/icon/next/pc.png);
+	}
+	.icon-link.link-prev th span {/* 戻るバージョン */
+		background-image: url(/account/content/flat/responsive/img/misc/icon/prev/pc.png);
+	}
+	.icon-link.link-notice th span {/* 注意バージョン */
+		background-image: url(/account/content/flat/responsive/img/misc/icon/notice/pc.png);
+	}
+	.icon-link.link-swt th span {/* ソフトウェアトークン */
+		background-image: url(/account/content/flat/responsive/img/misc/icon/swt/pc.png);
+	}
+	/* テキスト部分 */
+	.icon-link a {
+		color: #000;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	.icon-link a:hover {
+		text-decoration: underline;
+	}
+	/* 強調の場合色が変わる */
+	.icon-link.link-notice a {
+		color: #ed0000;
+	}
+	
+@media screen and (max-width: 640px) {
+	.icon-link {
+	}
+		/* アイコンとテキストのマージン */
+		.icon-link td {
+			padding-left: 8px;
+			line-height: 1.2;
+		}
+		/* ----- アイコン ----- */
+		.icon-link th span {
+			width: 32px;
+			height: 32px;
+			background-size: 32px 32px;
+		}
+		.icon-link.link-next th span {/* 進むバージョン */
+			background-image: url(/account/content/flat/responsive/img/misc/icon/next/sp.png);
+			background-repeat: no-repeat;
+		}
+		.icon-link.link-prev th span {/* 戻るバージョン */
+			background-image: url(/account/content/flat/responsive/img/misc/icon/prev/sp.png);
+			background-repeat: no-repeat;
+		}
+		.icon-link.link-notice th span {/* 注意バージョン */
+			background-image: url(/account/content/flat/responsive/img/misc/icon/notice/sp.png);
+			background-repeat: no-repeat;
+		}
+		.icon-link.link-swt th span {/* ソフトウェアトークン */
+			background-image: url(/account/content/flat/responsive/img/misc/icon/swt/sp.png);
+			background-repeat: no-repeat;
+		}
+}
+
+/* ====================================================================== */
+/* ヘッダ */
+/* ====================================================================== */
+#header {
+	background-color: #222;
+}
+	/* ===== スクエニロゴ ===== */
+	#header-logo {
+		height: 63px;
+		background-image: url(/account/content/flat/responsive/img/header/logo/pc.png);
+		background-repeat: no-repeat;
+		background-position: center center;
+	}
+	@media screen and (max-width: 640px) {
+		#header-logo {
+			height: auto;
+			background-image: none;
+		}
+		/* ----- ヘッダの高さ確保 ----- */
+		#header-logo:after {
+			display: block;
+			content: "";
+			padding-top: 18.7%;
+			background-size: 75%;
+			background-image: url(/account/content/flat/responsive/img/header/logo/sp.png);
+			background-repeat: no-repeat;
+			background-position: center center;
+		}
+	}
+
+/* ====================================================================== */
+/* フッター */
+/* ====================================================================== */
+#footer {
+	background-color: #222;
+	width: 100%;
+	height: 128px;
+	position: absolute;
+	bottom: 0;
+}
+@media screen and (max-width: 640px) {
+	#footer {
+ 		height: 201px;
+	}
+}
+	/* ===== フッタ内リンク ===== */
+	#footer a {
+		color: #fff;
+		text-decoration: none;
+	}
+		#footer a:hover {
+			text-decoration: underline;
+		}
+	/* ===== フッタナビ ===== */
+	#footer-navi {
+		margin-right: auto;
+		margin-left: auto;
+		padding-top: 30px;
+		width: 620px;
+	}
+	/* ----- fr,deはフッター文言が他言語より長いので調整 ----- */
+	.fr-fr #footer-navi, .de-de #footer-navi,
+	html:lang(fr) #footer-navi, html:lang(de) #footer-navi {
+		width: 800px;
+	}
+	
+		#footer-navi dl {
+		}
+		#footer-navi dt {
+			padding-bottom: 8px;
+			font-size: 0.85em;
+			color: #898989;
+		}
+		#footer-navi dd {
+			float: left;
+		}
+		#footer-navi a {
+			padding-left: 20px;
+			display: inline-block;
+			background-repeat: no-repeat;
+			background-image: url(/account/content/flat/responsive/img/footer/icon/arrow/pc.png);
+		}
+		/* ----- 規約とポリシー ----- */
+		#footer-navi-rule-policy {
+			float: left;
+		}
+			#footer-navi-rule-policy dd {
+				margin-right: 50px;
+			}
+			#footer-navi-rule-policy dd:last-child {
+				margin-right: 0;
+			}
+		/* ----- サポートセンター ----- */
+		#footer-navi-support {
+			float: right;
+		}
+	@media screen and (max-width: 640px) {
+		/* ===== フッタナビ ===== */
+		#footer-navi {
+			font-size: 14px;
+			padding-top: 6%;
+			width: 100%;
+		}
+		/* ----- fr,deはフッター文言が他言語より長いので調整 ----- */
+		.fr-fr #footer-navi, .de-de #footer-navi,
+		html:lang(fr) #footer-navi, html:lang(de) #footer-navi {
+			width: 100%;
+		}
+			#footer-navi dl {
+				float: none;
+				background-color: #222;
+				padding-left: 6.25%;
+				padding-right: 6.25%;
+			}
+			#footer-navi dt {
+				padding-bottom: 1%;
+				font-size: 0.85em;
+			}
+			#footer-navi dd {
+			}
+			#footer-navi a {
+				padding-left: 20px;
+				min-height: 36px;
+				background-image: url(/account/content/flat/responsive/img/footer/icon/arrow/sp.png);
+				background-size: 13px 22px;
+			}
+			/* ----- 規約とポリシー ----- */
+			#footer-navi-rule-policy {
+				margin-bottom: 3%;
+			}
+				#footer-navi-rule-policy dd {
+					margin-right: 20px;
+					margin-bottom: 1%;
+				}
+				#footer-navi-rule-policy dd:last-child {
+					margin-right: 0;
+				}
+			/* ----- サポートセンター ----- */
+			#footer-navi-support {
+			}
+	}
+	/* ===== コピーライト ===== */
+	#footer-copyright {
+		padding-top: 30px;
+		padding-bottom: 5px;
+		background-color: #222;
+		color: #fff;
+		font-size: 0.85em;
+		font-family: Arial;
+		text-align: center;
+	}
+	@media screen and (max-width: 640px) {
+		#footer-copyright {
+			padding-top: 4%;
+			padding-bottom: 2%;
+			padding-left: 6.25%;
+			padding-right: 6.25%;
+			font-size: 0.83em;
+		}
+	}
+	/* ESRBロゴ表示用 */
+	#main.withESRB,
+	#wrapBody.withESRB {
+		padding-bottom: 150px;
+	}
+	#footer.withESRB {
+		height: 150px;
+	}
+	#wrapFooterESRB #footer-copyright {
+		display: table-cell;
+		padding-left: 18px;
+	}
+	#wrapFooterESRB {
+		width: 620px;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #222;
+		padding-top: 10px;
+	}
+	#wrapFooterESRB div {
+		display: table-cell;
+		margin:0px auto;
+	}
+	@media screen and (max-width: 640px) {
+		#main.withESRB,
+		#wrapBody.withESRB {
+			padding-bottom: 279px;
+		}
+		#footer.withESRB {
+			height: 279px;
+		}
+		#wrapFooterESRB {
+			width: 100%;
+		}
+		#wrapFooterESRB div {
+			display: block;
+			padding-left: 6.25%;
+			padding-right: 6.25%;
+		}
+		#wrapFooterESRB #footer-copyright {
+			display: block;
+		}
+	}
+/* ====================================================================== */
+/* メイン */
+/* ====================================================================== */
+/* ===== メインコンテンツエリア：基本背景色 ===== */
+#main {
+	background-color: #efefef;
+}
+
+/* ===== コンテンツ１ブロック ===== */
+.content-box {
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 20px;
+	width: 700px;
+}
+	/* ----- コンテンツ枠 ----- */
+	.content-box-frame {
+		border: 1px solid #cccccc;
+		background-color: #fff;
+	}
+	/* ----- コンテンツブロック見出し ----- */
+	.content-box-header {
+		padding-left: 34px;
+		padding-top: 12px;
+		padding-bottom: 11px;
+		color: #fff;
+		font-size: 1.28em;
+		font-weight: bold;
+		background-color: #474a50;
+		background-image: url(/account/content/flat/responsive/img/contentbox/header/icon_pc.png);
+		background-repeat: no-repeat;
+		background-position: 16px center;
+	}
+	/* テキストなし大見出し */
+	.content-box-header.without-title {
+		padding: 0;
+		font-size: 0;
+		height: 20px;
+		background-image: none;
+	}
+	/* ----- コンテンツブロック中見出し ----- */
+	.inf-largeHeaderText,
+	.content-box-subheader {
+		margin-right: auto;
+		margin-left: auto;
+		padding-left: 16px;
+		padding-top: 6px;
+		padding-bottom: 5px;
+		width: 700px;
+		font-size: 1.14em;
+		font-weight: bold;
+		border: 1px solid #bdbdbd;
+		border-radius: 8px;
+		background-color: #dedede;
+		margin-bottom: 20px !important;
+	}
+
+@media screen and (max-width: 640px) {
+	/* ===== コンテンツ１ブロック ===== */
+	.content-box {
+		padding-bottom: 5%;
+		width: 100%;
+	}
+		/* ----- コンテンツ枠 ----- */
+		.content-box-frame {
+			border: none;
+			border-top: 1px solid #cccccc;
+			border-bottom: 1px solid #cccccc;
+		}
+		/* ----- コンテンツブロック見出し ----- */
+		.content-box-header {
+			padding-left: 25px;
+			padding-top: 2.5%;
+			padding-bottom: 2%;
+			font-size: 1.33em;
+			background-image: url(/account/content/flat/responsive/img/contentbox/header/icon_pc.png);
+			background-position: 12px center;
+		}
+			/* テキストなし大見出し */
+			.content-box-header.without-title {
+				height: 40px;
+			}
+		/* ----- コンテンツブロック中見出し ----- */
+		.inf-largeHeaderText,
+		.content-box-subheader {
+			padding-right: 16px;
+			padding-top: 9px;
+			padding-bottom: 8px;
+			width: auto;
+			border-radius: 0;
+			border-right: none;
+			border-left: none;
+		}
+}
+
+/* ====================================================================== */
+/* フロートテーブル */
+/* ====================================================================== */
+.float-table-box {
+	margin-right: auto;
+	margin-left: auto;
+	max-width: 600px;
+}
+/* ===== 横幅によって、左右と縦の組み替えをするテーブル ===== */
+.float-table {
+	width: 100%;
+	border: 1px solid #888888;
+}
+.fixed-table {
+	table-layout: fixed;
+}
+	/* ----- 行 ----- */
+	.float-table-row {
+		border-bottom: 1px solid #cccccc;
+	}
+	.float-table-row:last-child {
+		border-bottom: none;
+	}
+	/* ----- セル ----- */
+	.float-table-th,
+	.float-table-td {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+		.float-table-th .float-table-text,
+		.float-table-td .float-table-text {
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+	.float-table-th {
+		width:36%;
+		color: #fff;
+		background-color: #818eaa;
+	}
+		/* 矢印つき見出し */
+		.float-table-th.with-arrow {
+			background-image: url(../img/misc/icon/table_arrow.png);
+			background-repeat: no-repeat;
+			background-position: right center;
+			padding-right: 20px;
+		}
+	/* 注釈 */
+	.float-table-notice {
+		font-size: 0.85em;
+	}
+		.float-table-th .float-table-notice {
+			color: #ffea00;
+		}
+		.float-table-td .float-table-notice {
+			color: #000;
+		}
+	/* 必須 */
+	.float-table-required {
+		color: #ff7373;
+	}
+	/* プルダウンと入力 */
+	.float-table-select,
+	.float-table-input {
+		padding-top: 8px;
+		padding-bottom: 7px;
+		border: 1px solid #888888;
+		border-radius: 5px;
+	}
+	.float-table-input {
+		text-indent: 5px;
+		width:100%;
+	}
+.cell-w36 {
+	width:36%;
+}
+	
+@media screen and (max-width: 640px) {
+	.float-table-box {
+		width: 90%;
+	}
+	.float-table {
+	}
+		/* スマホビューの場合は縦積みになる */
+		.float-table-row,
+		.float-table-th,
+		.float-table-td {
+			display: block;
+		}
+		/* ----- セル ----- */
+		.float-table-th,
+		.float-table-td {
+			width: auto !important;
+			padding-top: 6px;
+			padding-bottom: 6px;
+			padding-left: 10px;
+			padding-right: 10px;
+			border: none;
+		}
+			/* 見出し側のテキスト */
+			.float-table-th .float-table-text {
+				padding-top: 3px;
+				padding-bottom: 3px;
+			}
+			/* 通常側のテキスト */
+			.float-table-td .float-table-text {
+				padding-top: 8px;
+				padding-bottom: 8px;
+				padding-left: 10px;
+				padding-right: 10px;
+			}
+		.float-table-th {
+		}
+			/* 矢印つき見出し */
+			.float-table-th.with-arrow {
+				background-image: none;
+			}
+		/* 注釈 */
+		.float-table-notice {
+			font-size: 1em;
+		}
+		/* プルダウン */
+		.float-table-select,
+		.float-table-input {
+			padding-top: 8px;
+			padding-bottom: 6px;
+			width: 99.8%;
+			border-radius: 5px;
+		}
+		.float-table-input {
+			padding-top: 10px;
+			padding-bottom: 8px;
+			text-indent: 5px;
+		}
+		/* ラジオボタン */
+		.float-table-radio {
+			width: 18px;
+			height: 18px;
+			vertical-align: middle;
+		}
+}
+
+/* ====================================================================== */
+/* フロートラベル */
+/* ====================================================================== */
+/* ===== ラベルを並べるエリア ===== */
+.float-label-box {
+	margin-right: auto;
+	margin-left: auto;
+	width: 700px;
+}
+	.float-label-box li {
+		margin-top: 10px;
+	}
+	.float-label-box li:first-child,
+	.float-label-box li:nth-child(2) {
+		margin-top: 0;
+	}
+	.float-label-box li:nth-child(odd) {
+		float: left;
+	}
+	.float-label-box li:nth-child(even) {
+		float: right;
+	}
+/* ===== 横幅によって、２列と１列の組み換えをするラベル ===== */
+.float-label {
+	display: block;
+	width: 390px;
+	color: #000;
+	font-size: 1.14em;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid #888888;
+	border-radius: 5px;
+	background-color: #fffddf;
+	background-image: url(../img/misc/icon/float_label/pc.png);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+}
+	.float-label:hover {
+		background-color: #fff9a7;
+	}
+	/* 要素のセンター揃え */
+	.float-label p {
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	/* ----- ラベル型ボタン使用不可 ----- */
+	.float-label-disabled {
+		cursor: default;
+		color: #999999;
+		background-color: #efefef;
+	}
+	.float-label-disabled:hover {
+		cursor: default;
+		color: #999999;
+		background-color: #efefef;
+	}
+	
+@media screen and (max-width: 640px) {
+	/* ===== ラベルを並べるエリア ===== */
+	.float-label-box {
+		width: 87.5%;
+	}
+		.float-label-box li,
+		.float-label-box li:nth-child(2) {
+			margin-top: 15px;
+		}
+		.float-label-box li:nth-child(odd),
+		.float-label-box li:nth-child(even) {
+			float: none;
+		}
+	/* ===== 横幅によって、２列と１列の組み換えをするラベル ===== */
+	.float-label {
+		width: auto;
+		background-image: url(../img/misc/icon/float_label/sp.png);
+	}
+		.float-label:hover {
+		}
+		/* 要素のセンター揃え */
+		.float-label p {
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 35px;
+			padding-bottom: 35px;
+		}
+}

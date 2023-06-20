@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Project Meteor Account Registration</title>
+	<link rel="stylesheet" href="css/register.css" type="text/css" />
+	<style>
+		.errorText {
+			color:red;
+			display:none;
+		}
+		.errorText:target {
+			display:block;
+		}
+	</style>
+</head>
+<body>
+	<form method="post" action="/lobby/createaccount" name="mainForm" class="formWrap" enctype="application/x-www-form-urlencoded">
+					<div class="float-table-box lv-3 mt30 sp-mt6">
+					<p>Please select your language and region.</p>
+						<table class="float-table">
+							
+							<tbody>
+							<tr class="float-table-row">
+								<th class="float-table-th with-arrow" style="width:36%;">
+									<p class="float-table-text">Language</p>
+								</th>
+								<td class="float-table-td">
+									
+									<select name="lang" id="lang" class="float-table-select countryList ">
+										
+										<option value="" selected>Please select a Language</option>
+										
+										<option value="EN" >
+										English 
+										</option>
+										
+										<option value="UK">
+										English UK
+										</option>
+										
+										<option value="FR">
+										French
+										</option>
+										
+										<option value="DE">
+										German
+										</option>
+										
+										<option value="JA">
+										Japanese
+										</option>
+										
+									</select>
+
+
+
+
+									<div class="errorText" id="langError">Please select a language.</div>
+								</td>
+							</tr>
+							
+							<tr class="float-table-row">
+								<th class="float-table-th with-arrow" style="width:36%;">
+									<p class="float-table-text">Region</p>
+								</th>
+								<td class="float-table-td">
+									
+									<select name="region" id="region" class="float-table-select countryList ">
+										
+										<option value="" selected>Please select a Region</option>
+										
+										<option value="1">
+										Japan 
+										</option>
+										
+										<option value="2">
+										North America
+										</option>
+										
+										<option value="3">
+										Europe
+										</option>
+
+
+
+
+									</select>
+									<div class="errorText" id="regionError">Please select a region.</div>
+								</td>
+							</tr>
+						</tbody></table>
+						
+					</div><!-- float-table -->
+					<div class="float-table-box mt25 sp-mt5">
+						<p>Please set your ID and password.</p>
+						<table class="float-table mt5 sp-mt1">
+							
+							<tbody><tr class="float-table-row">
+								<th class="float-table-th with-arrow" style="width:36%;">
+									<p class="float-table-text">User ID</p>
+								</th>
+								<td class="float-table-td">
+									
+									<div class="account-input-common">
+										<input type="text" name="username" id="username" autocomplete="off" class="float-table-input inpForm " value="" maxlength="16" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;); cursor: auto;">
+										
+									</div>
+									<div class="errorText" id="usernameError">Please enter a valid username.</div>
+									<div class="errorText" id="usernameExistError">This username is already taken.</div>
+								</td>
+							</tr>
+							
+							<tr class="float-table-row">
+								<th class="float-table-th with-arrow">
+									<p class="float-table-text">Password</p>
+								</th>
+								<td class="float-table-td">
+									
+									<div class="account-input-common">
+										<input type="password" name="password" id="password" autocomplete="off" class="float-table-input inpForm " value="" autocomplete="off" maxlength="32" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;); cursor: auto;">
+										
+									</div>
+									<div class="errorText" id="passwordError">Please enter a valid password.</div>
+								</td>
+							</tr>
+							
+							<tr class="float-table-row">
+								<th class="float-table-th with-arrow">
+									<p class="float-table-text">Repeat Password</p>
+								</th>
+								<td class="float-table-td">
+									
+									<div class="account-input-common">
+										<input type="password" name="verifypassword" id="verifypassword" autocomplete="off" class="float-table-input inpForm " value="" autocomplete="off" maxlength="32" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;); cursor: auto;">
+										
+									</div>
+									<div class="errorText" id="verifyPasswordError">Passwords do not match.</div>
+								</td>
+							</tr>
+						</tbody></table>
+					</div>
+					<div class="float-table-box mt25 sp-mt5">
+						<p>Please enter your email address here.</p>
+						<table class="float-table mt5 sp-mt1">
+							
+							<tbody><tr class="float-table-row">
+								<th class="float-table-th with-arrow" style="width:36%;">
+									<p class="float-table-text">E-mail Address</p>
+								</th>
+								<td class="float-table-td">
+									
+									<div class="account-input-common">
+										<input type="text" name="email" id="email" maxlength="128" class="float-table-input inpForm " value="">
+									</div>
+									<div class="errorText" id="emailError">Please enter a valid email.</div>
+								</td>
+							</tr>
+							
+
+							
+						</tbody></table>
+			<br>
+			<p>
+				<input type="button" value="Back" class="button prev-button mt20 sp-mt6" onclick="window.history.back();" ></input>
+				<input type="submit" value="Next" class="button next-button mt20 sp-mt6"></input>
+			</p>
+	</form>
+	<script>
+		/*
+		window.location.search.substr(1).split("&").forEach(function(k) {
+			var s = k.split("=");
+			var e = document.getElementById(s[0]);
+			if(e) {
+				e.value = decodeURIComponent(s[1]);
+			}
+			
+		}); */
+		var queries = window.location.search.substr(1).split("&");
+		for (var k = 0; k < queries.length; k++) {
+			var s = queries[k].split("=");
+			
+			var e = s[0].split("Error");
+			if (e[0] != null && e[0].length > 0) {
+				alert("There was an issue with creating the acccount.");
+				k = queries.length;
+			}
+		}
+	</script>
+</body>
+
+
+</html>

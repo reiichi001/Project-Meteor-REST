@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Project Meteor - Login</title>
+	<style>
+		html, body {
+			font-family: Arial;
+			font-size: 14px;
+			margin:0;
+			padding: 0;
+			width: 600px;
+		}
+
+		html {
+			padding: 10px;
+		}
+
+		{
+			background-color: #eee;
+			border: solid 1px #666;
+			border-radius: 3px;
+			margin-bottom: 0;
+		}
+
+		table {
+			justify-content: center;
+			width: 100%;
+			height: 100%;
+			padding: 20px;
+		}
+
+		input {
+			width: 100%;
+			border: solid 1px #222;
+			padding: 3px;
+			outline: none;
+		}
+				
+		#login {
+			background-image: url(img/btLogin.gif);
+			background-position: 0 0;
+			background-repeat: no-repeat;
+			border: none;
+			width: 200px;
+			height: 40px;
+		}
+		#login:hover {
+			background-position: 0 -40px;
+			cursor: pointer;
+		}
+		
+		.errorText{
+			color: red;
+			display:none;
+		}
+		.errorText:target {
+			display:block;
+		}
+		
+		.banner {
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<!--
+<body scroll="no">
+
+<div class="s-login-box-form">
+	<h1 class="text-center s-login-call">Login to Account</h1>
+	<div class="input-control">
+		<label class="s-login-input-wrapper">
+			Username
+			<input type="text" name="username" autofocus>
+		</label>
+	</div>
+	<div class="input-control">
+		<label class="s-login-input-wrapper">
+			Password
+			<input type="password" name="password">
+		</label>
+	</div>
+	<button class="btn btn-default s-login-btn pull-right" id="submitButton" onclick="doLogin()">Login</button>
+	<p id="Error" class="s-error-text"></p>
+</div>
+<a class="btn btn-default s-acc-btn" href="createUser.html">Create Account</a>
+	
+
+</body>
+-->	
+<body>
+	<table border="0" cellpadding="0" cellspacing="0">
+		<tbody>
+			<tr>
+				<td width="50%">
+					<img src="img/classiclogo.png" class="logo" width="300px">
+				</td>
+				<td width="50%">
+					<form method="post" action="/lobby/login" enctype="application/x-www-form-urlencoded">
+						<table border="0" cellpadding="5px" cellspacing="0">
+							<tbody>
+							<tr>
+								<td width="5%"><img src="img/lbSQEXId_mem.gif"></td>
+								<td width="40%"><label for="username">Username</label></td>
+								<td width="50%"><input id="username" name="username" autocomplete="off" type="text" required></td>
+							</tr>
+							<tr>
+								<td><img src="img/lbSQEXPass_mem.gif" <="" td="">
+								</td><td><label for="password">Password</label></td>
+								<td><input id="password" name="password" autocomplete="off" type="password" required></td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center">
+								<p class="errorText" id="usernameError">Please enter a valid username.</p>
+								<p class="errorText" id="passwordError">Please enter a valid password.</p>
+								<p class="errorText" id="loginFailedError">Login failed.</p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center">
+									<input type="submit" name="login" id="login" value=""></input>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3" align="center">
+									<a href="createUser.html">Don't have a awesome account?</a>
+								</td>
+
+							</tr>
+							</tbody>
+						</table>
+					</form>
+				</td>
+			</tr>
+			<!--
+			<td colspan="3" align="center">
+				<a href="newlogin.html">Switch to modern login page</a>
+			</td> 
+			-->
+			<tr>
+				<td colspan="2" align="center">
+					<img src="img/banner.png" class="banner" width="700px">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<script>
+		/*
+		window.location.search.substr(1).split("&").forEach(function(k) {
+			var s = k.split("=");
+			var e = document.getElementById(s[0]);
+			if(e) {
+				e.value = decodeURIComponent(s[1]);
+			}
+		});
+		*/
+		var queries = window.location.search.substr(1).split("&");
+		for (var k = 0; k < queries.length; k++) {
+			var s = queries[k].split("=");
+			
+			var e = s[0].split("Error");
+			if (e[0] != null && e[0].length > 0) {
+				alert("There was an issue logging in.");
+			}
+		}
+	</script>
+
+</body>
+
+</html>
