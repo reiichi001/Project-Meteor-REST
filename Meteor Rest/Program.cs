@@ -1,35 +1,35 @@
 using Meteor_Rest;
-using Meteor_Rest.Patch;
-using System.Net;
+using System.IO;
 using System.Text;
 
+var builder = WebApplication.CreateBuilder(args);
+/*
 var builder = WebApplication.CreateBuilder(new WebApplicationOptions()
 {
     Args = args,
     ContentRootPath = Directory.GetCurrentDirectory(),
     WebRootPath = "www"
 });
+*/
 
 var app = builder.Build();
-
-//Load Config
-ConfigConstants.Load(app);
-ConfigConstants.ApplyLaunchArgs(app, args);
-PatchList.Load(app);
+app.UseDefaultFiles();
+app.UseStaticFiles();
 
 //Serve on the launch server port
-app.Urls.Add($"http://{ConfigConstants.OPTIONS_BINDIP}:{ConfigConstants.OPTIONS_PORT}");
+app.Urls.Add($"http://{app.Configuration["General:rest_server_ip"]}:{app.Configuration["General:rest_server_port"]}");
 
 //Server on the patch server port
-app.Urls.Add($"http://{ConfigConstants.OPTIONS_BINDIP}:{ConfigConstants.PATCHER_PORT}");
+app.Urls.Add($"http://{app.Configuration["General:rest_server_ip"]}:{app.Configuration["PatchHTTP:ffxiv_patchserver_port"]}");
 
 //Server on the torrent server port
-app.Urls.Add($"http://{ConfigConstants.OPTIONS_BINDIP}:8999");
-app.Urls.Add($"http://{ConfigConstants.OPTIONS_BINDIP}:54997");
+app.Urls.Add($"http://{app.Configuration["General:rest_server_ip"]}:8999");
+app.Urls.Add($"http://{app.Configuration["General:rest_server_ip"]}:54997");
 
-app.UseDefaultFiles();
+AuthHandler authHandler = new AuthHandler(app.Logger, app.Configuration);
+PatchHandler patchHandler = new PatchHandler(app.Logger, app.Configuration);
 
-app.UseStaticFiles();
+
 
 app.MapGet("/", (HttpResponse response) =>
 {
@@ -55,15 +55,15 @@ async Task PatchCheck(HttpResponse response, string path)
 {
     app.Logger.LogInformation($"Looking for: {path}");
 
-    string[] paths = path?.Split('/');
+    string[] paths = path.Split('/');
 
     if (paths?[0] == "boot")
     {
-        Patch.checkBootVersion(app, response, paths[1]); return;
+        patchHandler.CheckBootVersion(response, paths[1]); return;
     }
     else if (paths?[0] == "game")
     {
-        Patch.checkGameVersion(app, response, paths[1]); return;
+        patchHandler.CheckGameVersion(response, paths[1]); return;
     }
     else
     {
@@ -76,6 +76,32 @@ async Task PatchCheck(HttpResponse response, string path)
     await response.Body.WriteAsync(Encoding.ASCII.GetBytes("Not Implented"));
 }
 
-app.MapGet("/account/content/ffxivlogin", (HttpResponse response) => response.Redirect(Constant.loginPage));
+app.MapGet("/account/content/ffxivlogin", (HttpResponse response) => response.Redirect(app.Configuration["General:rest_login_page"]));
+
+app.MapPost("/lobby/{*path}", HandleAuth);
+async Task HandleAuth(HttpRequest request, HttpResponse response, string path)
+
+{
+    app.Logger.LogInformation($"Looking for: {path}");
+    string[] paths = path.Split('/');
+
+    if (paths?[0] == "createaccount")
+    {
+        authHandler.CreateAccount(request, response); return;
+    }
+    else if (paths?[0] == "login")
+    {
+        authHandler.LoginAccount(request, response); return;
+    }
+    else
+    {
+        response.StatusCode = 404;
+    }
+    //ReadOnlyMemory<byte> source = File.ReadAllBytes("news.html");
+    response.ContentType = "text/html";
+    //response.ContentLength = source.Length;
+    //await response.Body.WriteAsync(source);
+    await response.Body.WriteAsync(Encoding.ASCII.GetBytes("Not Implented"));
+};
 
 app.Run();

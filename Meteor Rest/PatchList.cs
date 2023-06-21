@@ -8,19 +8,14 @@ namespace Meteor_Rest
 {
     class PatchList
     {
-        public static Dictionary<String, String> bootpatches;
-        public static Dictionary<String, String> gamepatches;
-
-
-        public static bool Load(WebApplication app)
-        {
-            Console.WriteLine("Loading patch lists");
-
-            bootpatches = new Dictionary<string, string>
+        public static readonly Dictionary<string, string> bootpatches =
+            new Dictionary<string, string>
             {
                 { "2010.07.10.0000" , "2010.09.18.0000" }
             };
-            gamepatches = new Dictionary<string, string>
+
+        public static readonly Dictionary<string, string> gamepatches =
+            new Dictionary<string, string>
             {
                 {"2010.07.10.0000" , "2010.09.19.0000"},
                 {"2010.09.19.0000" , "2010.09.23.0000"},
@@ -73,9 +68,6 @@ namespace Meteor_Rest
                 {"2012.08.10.0000" , "2012.09.06.0000"},
                 {"2012.09.06.0000" , "2012.09.19.0001"}
             };
-
-            return true;
-        }
 
     }
 }
